@@ -1,0 +1,32 @@
+<div class='panel panel-primary'>
+    <div class='panel-heading'>
+        <div>Income Sum: {{sum}}₪</div>
+    </div>
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-4'><input type='text' placeholder="Filter by" [(ngModel)]='userFilter'></div>
+        </div>
+        <div class='table-responsive'>
+            <table class='table'>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Execution date</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let income of incomes | companyFilter: userFilter : 'name'">
+                        <td>{{income.id}}</td>
+                        <td>{{income.name}}</td>
+                        <td>{{income.date}}</td>
+                        <td>{{income.description}}</td>
+                        <td>{{income.amount}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

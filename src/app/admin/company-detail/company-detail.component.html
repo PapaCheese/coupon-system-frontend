@@ -1,0 +1,46 @@
+<div class='panel panel-primary'>
+    <div class='panel-heading' style='font-size:large'>
+        {{pageTitle + ': ' + company?.name}}
+    </div>
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-6'>
+                <div class='row'>
+                    <div class='col-md-3'>ID:</div>
+                    <div class='col-md-6'>{{company?.id}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>name:</div>
+                    <div class='col-md-6'>{{company?.name}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Password:</div>
+                    <div class='col-md-6'>{{company?.password}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Email:</div>
+                    <div class='col-md-6'>{{company?.email}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Coupons:</div>
+                    <div class='col-md-6'>{{company?.coupons.length}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='panel-footer'>
+        <a class='btn btn-default' (click)='onBack()' style='width:80px'>
+            <i class='glyphicon glyphicon-arrow-left'></i> Back
+        </a>
+        <a class='btn btn-default' (click)='onRemove()' style='width:160px'>
+            <i class='glyphicon glyphicon-remove'></i> Remove Company
+        </a>
+        <a class='btn btn-default' (click)='onUpdate()' style='width:155px'>
+            <i class='glyphicon glyphicon-pencil'></i> Update Company
+        </a>
+        <p *ngIf="removeStatus">{{removeStatus}}</p>
+    </div>
+</div>
+<div *ngIf="toggleUpdate">
+    <update-company [company]='company'></update-company>
+</div>

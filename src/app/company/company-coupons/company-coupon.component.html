@@ -1,0 +1,62 @@
+<div class='panel panel-primary'>
+    <div class='panel-heading' style='font-size:large'>
+        {{pageTitle + ': ' + coupon?.title}}
+    </div>
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-6'>
+                <div class='row'>
+                    <div class='col-md-3'>ID:</div>
+                    <div class='col-md-6'>{{coupon?.id}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Title:</div>
+                    <div class='col-md-6'>{{coupon?.title}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Release Date:</div>
+                    <div class='col-md-6'>{{coupon?.startDate}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Expiration Date:</div>
+                    <div class='col-md-6'>{{coupon?.endDate}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Availabile:</div>
+                    <div class='col-md-6'>{{coupon?.amount}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Genre:</div>
+                    <div class='col-md-6'>{{coupon?.type}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Message:</div>
+                    <div class='col-md-6'>{{coupon?.message}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Price:</div>
+                    <div class='col-md-6'>{{coupon?.price | currency:'ILS':'symbol':'1.1-2'}}</div>
+                </div>
+            </div>
+            <div class='col-md-6'>
+                <img class='center-block img-responsive' [style.height.px]='150' [style.margin.px]='2' [src]='coupon?.image'
+                    [title]='coupon?.title'>
+            </div>
+        </div>
+    </div>
+    <div class='panel-footer'>
+        <a class='btn btn-default' (click)='onBack()' style='width:80px'>
+            <i class='glyphicon glyphicon-arrow-left'></i> Back
+        </a>
+        <a class='btn btn-default' (click)='onRemove()' style='width:155px'>
+            <i class='glyphicon glyphicon-remove'></i> Remove Coupon
+        </a>
+        <a class='btn btn-default' (click)='onUpdate()' style='width:155px'>
+            <i class='glyphicon glyphicon-pencil'></i> Update Coupon
+        </a>
+        <p *ngIf="removeStatus">{{removeStatus}}</p>
+    </div>
+</div>
+<div *ngIf="toggleUpdate">
+    <update-coupon [coupon]='coupon'></update-coupon>
+</div>

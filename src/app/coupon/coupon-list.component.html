@@ -1,0 +1,45 @@
+<div class='panel panel-primary'>
+    <div class='panel-heading'>
+        {{pageTitle}}
+    </div>
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-4'><input type='text' placeholder="Filter by" [(ngModel)]='userFilter'></div>
+        </div>
+        <div class='table-responsive'>
+            <table class='table'>
+                <thead>
+                    <tr>
+                        <th>
+                            <button class='btn btn-primary' (click)='toggleImage()'>
+                                {{showImage ?'Hide':'Show'}} Image
+                            </button>
+                        </th>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Release Date</th>
+                        <th>Expiration Date</th>
+                        <th>Amount</th>
+                        <th>Genre</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let coupon of coupons | couponFilter: userFilter : 'title'">
+                        <td><img [src]="coupon.image"  [style.height.px]='50' title={{coupon.title}} *ngIf='showImage'></td>
+                        <td>{{coupon.id}}</td>
+                        <td>
+                            <a [routerLink]="[coupon.id]">
+                                {{coupon.title}}</a>
+                        </td>
+                        <td>{{coupon.startDate}}</td>
+                        <td>{{coupon.endDate}}</td>
+                        <td>{{coupon.amount}}</td>
+                        <td>{{coupon.type}}</td>
+                        <td>{{coupon.price | currency: 'ILS':'symbol':'1.1-2'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

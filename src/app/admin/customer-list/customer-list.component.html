@@ -1,0 +1,43 @@
+<div class='panel panel-primary'>
+    <div class='panel-heading'>
+        <div>
+            Customer List
+        </div>
+    </div>
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-4'><input type='text' placeholder="Filter by" [(ngModel)]='userFilter'></div>
+        </div>
+        <div class='table-responsive'>
+            <table class='table'>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Password</th>
+                        <th>Coupons Owned</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let customer of customers | customerFilter: userFilter : 'name'">
+                        <td>{{customer.id}}</td>
+                        <td>
+                            <a [routerLink]="[customer.id]">
+                                {{customer.name}}</a>
+                        </td>
+                        <td>{{customer.password}}</td>
+                        <td>{{customer.coupons.length}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <a class='btn btn-default' (click)='onCreate()' style='width:150px'>
+            <i class='glyphicon glyphicon-pencil'></i> Create Customer
+        </a>
+    </div>
+</div>
+<div *ngIf="toggleCreate">
+    <create-customer></create-customer>
+</div>
